@@ -1,14 +1,18 @@
 
 #include <stdio.h>
 #include "temp_function.h"
-#define SIZE 100
+#define SIZE 10000
 
 int main(void)
 {
-	struct sensor info[SIZE];
+	struct monthStat mStat[SIZE];
+	struct yearStat yStat;
 	char name[] = "temperature_small.csv";
-	int number = ReadCSV(info, name);
-	print(info,number);
+	int monthNum = ReadCSV(mStat, name);
+	printAllMonth(mStat, monthNum);
+	yStat = AddYearStat(yStat, mStat, monthNum);
+	printf("In %d avg = %f, min = %d, max = %d\n",mStat[0].year, yStat.yearAvg, yStat.yearMin, yStat.yearMax);
+	printMonth(mStat, monthNum, 3);
 return 0;
 }
 

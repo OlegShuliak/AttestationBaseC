@@ -3,19 +3,27 @@
 #include <stdint.h>
 #include <string.h>
 
-struct sensor {
-	uint8_t day;
-	uint8_t month;
-	uint8_t hour;
-	uint8_t minute;
-	uint16_t year;
-	int8_t t;
+struct monthStat {
+	int num;
+	int year;
+	int month;
+	int monthAvg;
+	int monthMin;
+	int monthMax;
 };
 
-void AddRecord(struct sensor* info, int number, uint16_t year, uint8_t month, uint8_t day,uint8_t hour, uint8_t minute, int8_t t);
+struct yearStat {
+	float yearAvg;
+	int yearMin;
+	int yearMax;
+};
 
-int ReadCSV(struct sensor* info, char name[]);
+void AddRec(struct monthStat* mStat, int number, int num, int year, int month, int monthAvg, int monthMin, int monthMax);
 
-void print(struct sensor* info,int number);
+struct yearStat AddYearStat (struct yearStat yStat, struct monthStat* mStat, int number);
 
-void printMonth(struct sensor* info,int number, uint8_t month_num);
+int ReadCSV(struct monthStat* mStat, char name[]);
+
+void printMonth (struct monthStat* mStat, int number, int month);
+
+void printAllMonth (struct monthStat* mStat, int number);
