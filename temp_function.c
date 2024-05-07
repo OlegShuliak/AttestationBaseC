@@ -60,9 +60,9 @@ int ReadCSV(struct monthStat* mStat, char name[])
 }
 
 void printMonth (struct monthStat* mStat, int number, int month){
-	printf("%5s %5s %5s %5s %5s %5s\n", "Pos", "Year", "Month", "Avg", "Min", "Max");
 	for(int i=0; i<number; i++)
 		if (mStat[i].month == month){
+			printf("%5s %5s %5s %5s %5s %5s\n", "Pos", "Year", "Month", "Avg", "Min", "Max");
 			printf("%5d %5d %5d %5d %5d %5d\n", mStat[i].num, mStat[i].year, mStat[i].month, mStat[i].monthAvg, mStat[i].monthMin, mStat[i].monthMax);
 			break;
 		}
